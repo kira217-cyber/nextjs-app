@@ -80,7 +80,7 @@ export default function Navbar() {
           {/* Left: Logo */}
           <div className="flex items-center gap-2">
             <Link href="/" className="text-xl font-extrabold tracking-tight">
-              Phone-<span className="text-primary">Vibe</span>
+              Store-<span className="text-primary">Apple</span>
             </Link>
           </div>
 
@@ -115,7 +115,7 @@ export default function Navbar() {
 
           {/* Mobile right: icons + hamburger */}
           <div className="md:hidden flex items-center gap-2">
-            <button onClick={toggleTheme} className="btn btn-ghost btn-sm">
+            <button onClick={toggleTheme} className="btn btn-ghost btn-sm rounded-full">
               {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
             </button>
             <button
