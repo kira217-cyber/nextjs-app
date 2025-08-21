@@ -67,7 +67,7 @@ export default function Navbar() {
   const linkClass = (href) =>
     `px-2 py-1 rounded-md transition ${
       isActive(href)
-        ? "text-primary font-semibold"
+        ? "text-primary font-bold underline"
         : "text-base-content/80 hover:text-primary"
     }`;
     const handleLogout = () => {
@@ -159,7 +159,7 @@ export default function Navbar() {
           ))}
 
           {session ? (
-            <button onClick={() => { closeMenu(); handleLogout; }} className="block text-left w-full text-error px-2 py-1 hover:cursor-pointer">
+            <button onClick={() => { closeMenu(); handleLogout(); }} className="block text-left w-full text-error px-2 py-1 hover:cursor-pointer">
               Logout
             </button>
           ) : (
