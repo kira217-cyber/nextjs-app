@@ -1,5 +1,7 @@
 "use client"
 
+import HeroSection from "./components/HeroSection/HeroSection"
+
 
 export default function HomePage() {
 
@@ -7,9 +9,8 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="p-6">
-        <h1 className="text-3xl font-bold">Welcome to Our Store!</h1>
-        <p>Find the best products here.</p>
+      <section className="">
+       <HeroSection />
       </section>
 
       {/* Product Highlights */}
