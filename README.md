@@ -37,7 +37,6 @@ This project is an **Apple Store website** built using Next.js 15 (App Router).
 - NextAuth.js (Authentication)  
 - Tailwind CSS + DaisyUI  
 - React Hot Toast (Notifications)  
-- imgbb API (Image Upload)  
 - Vercel (Deployment)
 
 ---
@@ -48,3 +47,16 @@ This project is an **Apple Store website** built using Next.js 15 (App Router).
 ```bash
 git clone <your-repo-link>
 cd <project-folder>
+
+# 1. NextAuth Uri key for Deployment
+NEXTAUTH_URL=your_nextauth_link
+
+# 2. NextAuth secret key for authentication
+NEXTAUTH_SECRET=your_nextauth_secret_here
+
+# 3. NextAuth Google client ID (if using Google login)
+GOOGLE_CLIENT_ID=your_google_client_id_here
+
+# 4. NextAuth Google client secret (if using Google login)
+GOOGLE_CLIENT_SECRET=your_google_client_secret_here
+
