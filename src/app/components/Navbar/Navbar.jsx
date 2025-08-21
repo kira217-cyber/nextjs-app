@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { ShoppingCart, Bookmark, Menu, X, Sun, Moon } from "lucide-react";
+import {  Menu, X, Sun, Moon } from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function Navbar() {
   const { data: session } = useSession();
   const pathname = usePathname();
+  const router = useRouter();
 
   // ---------- Theme (DaisyUI) ----------
   const [theme, setTheme] = useState("light");
@@ -68,6 +70,11 @@ export default function Navbar() {
         ? "text-primary font-semibold"
         : "text-base-content/80 hover:text-primary"
     }`;
+    const handleLogout = () => {
+    signOut({ redirect: false })
+    toast.success("Logged out successfully 👋")
+    router.push('/login')
+  }
 
   return (
     <nav className="w-full border-b bg-base-100 sticky top-0 z-50">
@@ -93,7 +100,7 @@ export default function Navbar() {
             ))}
 
             {session ? (
-              <button onClick={() => signOut()} className="text-error hover:underline hover:cursor-pointer">
+              <button onClick={handleLogout} className="text-error hover:underline hover:cursor-pointer">
                 Logout
               </button>
             ) : (
@@ -152,7 +159,7 @@ export default function Navbar() {
           ))}
 
           {session ? (
-            <button onClick={() => { closeMenu(); signOut(); }} className="block text-left w-full text-error px-2 py-1 hover:cursor-pointer">
+            <button onClick={() => { closeMenu(); handleLogout; }} className="block text-left w-full text-error px-2 py-1 hover:cursor-pointer">
               Logout
             </button>
           ) : (

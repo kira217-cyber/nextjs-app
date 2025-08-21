@@ -1,39 +1,39 @@
-"use client"
+"use client";
 
-import { useParams, useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import Loading from "@/app/components/Loading/Loading"
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Loading from "@/app/components/Loading/Loading";
 
 export default function ProductDetailsPage() {
-  const params = useParams()
-  const router = useRouter()
-  const [product, setProduct] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const params = useParams();
+  const router = useRouter();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch("/api/products")
-        const data = await res.json()
-        const p = data.find((item) => item.id === parseInt(params.id))
-        setProduct(p)
-        setLoading(false)
+        const res = await fetch("/api/products");
+        const data = await res.json();
+        const p = data.find((item) => item.id === parseInt(params.id));
+        setProduct(p);
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching product:", error)
-        setLoading(false)
+        console.error("Error fetching product:", error);
+        setLoading(false);
       }
-    }
+    };
 
-    fetchProduct()
-  }, [params.id])
+    fetchProduct();
+  }, [params.id]);
 
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
         <Loading />
       </div>
-    )
+    );
   }
 
   if (!product) {
@@ -47,12 +47,12 @@ export default function ProductDetailsPage() {
           Back to Products
         </button>
       </div>
-    )
+    );
   }
 
   return (
     <div className="flex items-center justify-center min-h-screen p-4">
-      <div className="max-w-5xl w-full rounded-xl shadow-lg overflow-hidden md:flex md:gap-6 bg-white">
+      <div className="max-w-5xl w-full rounded-xl shadow-lg overflow-hidden md:flex md:gap-6 ">
         {/* Product Image */}
         <div className="md:flex-1">
           <img
@@ -66,7 +66,7 @@ export default function ProductDetailsPage() {
         <div className="p-6 md:flex-1 flex flex-col justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-            <p className="text-gray-700 mb-4">{product.description}</p>
+            <p className=" mb-4">{product.description}</p>
           </div>
 
           <div className="mt-4 flex items-center justify-between">
@@ -85,5 +85,5 @@ export default function ProductDetailsPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

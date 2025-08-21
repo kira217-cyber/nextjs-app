@@ -1,49 +1,49 @@
-"use client"
+"use client";
 
-import Loading from "@/app/components/Loading/Loading"
-import Link from "next/link"
-import { useEffect, useState } from "react"
+import Loading from "@/app/components/Loading/Loading";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function ProductsPage() {
-  const [products, setProducts] = useState([])
-  const [search, setSearch] = useState("")
-  const [loading, setLoading] = useState(true)
+  const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("/api/products")
-        const data = await res.json()
-        setProducts(data)
-        setLoading(false)
+        const res = await fetch("/api/products");
+        const data = await res.json();
+        setProducts(data);
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching products:", error)
-        setLoading(false)
+        console.error("Error fetching products:", error);
+        setLoading(false);
       }
-    }
+    };
 
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
   // Filter products by search
   const filteredProducts = products.filter((p) =>
     p.name.toLowerCase().includes(search.toLowerCase())
-  )
+  );
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
     <div className="max-w-7xl mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-10 text-center">Our Products</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Our Products</h1>
 
       {/* Search Bar */}
       <div className="mb-6 flex justify-center">
         <input
           type="text"
           placeholder="Search by product title..."
-          className="w-full sm:w-1/2 p-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full sm:w-1/2 p-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -83,5 +83,5 @@ export default function ProductsPage() {
         )}
       </div>
     </div>
-  )
+  );
 }

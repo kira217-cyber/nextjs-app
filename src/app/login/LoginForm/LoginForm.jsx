@@ -1,21 +1,45 @@
 "use client";
 
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const router = useRouter();
+  // যদি already login থাকে → auto redirect
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await signIn("credentials", {
-      redirect: true,
+      redirect: false,
       email,
       password,
       callbackUrl: "/products",
     });
-    console.log(result);
+    if (result?.error) {
+      toast.error("Invalid email or password ❌");
+    } else {
+      toast.success("Logged in successfully 🎉");
+      router.push("/"); // redirect to home page
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    const result = await signIn("google", {
+      redirect: false,
+      callbackUrl: "/", // login success → homepage
+    });
+    if (result?.error) {
+      toast.error("Invalid email or password ❌");
+    } else {
+      toast.success("Logged in successfully 🎉");
+      router.push("/"); // redirect to home page
+    }
   };
 
   return (
@@ -42,7 +66,8 @@ export default function LoginPage() {
             Welcome back to <span className="text-primary">Store-Apple</span>
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-6">
-            Build your design system effortlessly with our powerful component library.
+            Build your design system effortlessly with our powerful component
+            library.
           </p>
 
           {/* Form */}
@@ -86,7 +111,7 @@ export default function LoginPage() {
 
             <button
               type="button"
-              onClick={() => signIn("google", { callbackUrl: "/products" })}
+              onClick={handleGoogleLogin}
               className="btn btn-outline w-full flex gap-2"
             >
               <img
@@ -97,7 +122,6 @@ export default function LoginPage() {
               Continue with Google
             </button>
           </form>
-
         </div>
       </div>
     </div>
