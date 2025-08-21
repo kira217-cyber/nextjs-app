@@ -8,7 +8,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t bg-base-100 ">
+    <footer className="w-full border-t bg-base-100 mt-10">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-4 gap-4">
         {/* Left Side - Logo & Name */}
         <div className="flex items-center  font-bold">
