@@ -11,9 +11,9 @@ const Footer = () => {
     <footer className="w-full border-t bg-base-100 ">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-4 gap-4">
         {/* Left Side - Logo & Name */}
-        <div className="flex items-center gap-2 font-bold">
-          
-          <span className="font-semibold text-lg">Store-</span><span className="font-semibold text-lg text-primary">Apple</span>
+        <div className="flex items-center  font-bold">
+          Store-<span className="text-primary">Apple</span>
+        
         </div>
 
         {/* Middle - Copyright */}
