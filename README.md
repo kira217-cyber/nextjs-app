@@ -1,6 +1,6 @@
 # Apple Store Website (Next.js 15)
 
-![Apple Store](https://i.ibb.co/your-screenshot-link.png)
+![Apple Store](https://i.ibb.co.com/h1fzW33Q/Screenshot-2025-08-22-030318.png)
 
 ## Project Description
 This project is an **Apple Store website** built using Next.js 15 (App Router).  
